@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink";
+
+body{
+  margin: 0px;
+}
+
+.loging-button{
+  margin-left: auto;
+}
+
+.container{
+  width: 95%;
+  margin: 20px auto;
+}
+
+.boards{
+  display: flex;
+}
+
+.board{
+  width: 300px;
+  margin: 0 15px;
+}

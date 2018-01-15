@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <h1>Task manager</h1>
+  <button mat-button class="loging-button">Log in</button>
+</mat-toolbar>
+<div class="container">
+  <div class="boards">
+    <tm-board 
+      *ngFor="let board of boards"
+      class="board"
+      [board]="board"></tm-board>
+  </div>
+</div>
