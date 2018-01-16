@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://boards'
+  apiUrl: 'http://localhost:3000'
 };

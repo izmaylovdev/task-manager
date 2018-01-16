@@ -1,3 +1,22 @@
-<mat-card>
-  <mat-card-title>{{ board.name }}</mat-card-title>
+<mat-card [sortableData]="board.tasks"  dnd-sortable-container (onDropSuccess)="onDrag($event)">
+  <mat-card-title>{{ board.name }}
+    <button mat-icon-button class="board__edit-button">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-title>
+  <mat-card-content class="tasks">
+    <div 
+      *ngFor="let task of board.tasks; let i = index"
+       dnd-sortable
+       [sortableIndex]="i"
+      class="task">
+        <span>{{ task.text }}</span>
+        <button class="task__edit-button">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Add task</button>
+  </mat-card-actions>
 </mat-card>

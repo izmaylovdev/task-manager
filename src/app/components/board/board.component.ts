@@ -13,4 +13,7 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onDrag (event) {
+    console.log(event);
+  }
 }

@@ -8,13 +8,15 @@ export class InMemoryDataService {
   createDb () {
     const boards = [
       {
+        id: 0,
         name: 'Tasks',
         tasks: [
-          'Sign in',
-          'Create first task'
+          { id: 0, text: 'Sign in' },
+          { id: 1, text: 'Create first task' },
         ]
       },
       {
+        id: 1,
         name: 'In Work',
         tasks: []
       }

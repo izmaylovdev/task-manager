@@ -1,12 +1,20 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
   <h1>Task manager</h1>
-  <button mat-button class="loging-button">Log in</button>
+  <div class="toolbar__actions">
+    <button mat-raised-button (click)="signUp()">Sign up</button>
+    <span class="toolbar__small-text">or</span>
+    <button mat-raised-button (click)="signIn()">Sign in</button>
+  </div>
 </mat-toolbar>
+
 <div class="container">
   <div class="boards">
-    <tm-board 
+    <tm-board
       *ngFor="let board of boards"
       class="board"
       [board]="board"></tm-board>
+    <button mat-icon-button  mat-raised-button matTooltip="Add new board" (click)="addBoard()">
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>
