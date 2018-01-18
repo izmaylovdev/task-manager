@@ -26,7 +26,8 @@ import {
   MatTooltipModule,
   MatInputModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { BoardsComponent } from './components/boards/boards.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -55,6 +56,7 @@ import { EditBoardDialogComponent } from './components/edit-board-dialog/edit-bo
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
+    MatSnackBarModule,
     MatDatepickerModule,
     HttpClientModule,
     MatInputModule,

@@ -5,7 +5,7 @@
       class="board" 
       [board]="board"
       (delete)="deleteBoard($event)"></tm-board>
-    <button mat-icon-button mat-raised-button matTooltip="Add new board" (click)="addBoard()">
+    <button *ngIf="isLogined" mat-icon-button mat-raised-button matTooltip="Add new board" (click)="addBoard()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

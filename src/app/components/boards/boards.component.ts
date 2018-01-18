@@ -5,6 +5,7 @@ import { iBoard } from '../../interfaces/iBoard';
 import { Observable } from 'rxjs/Observable';
 import { EditBoardDialogComponent } from '../edit-board-dialog/edit-board-dialog.component';
 import { DragulaService } from 'ng2-dragula';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'tm-boards',
@@ -13,15 +14,21 @@ import { DragulaService } from 'ng2-dragula';
 })
 export class BoardsComponent implements OnInit {
   boards: iBoard[];
+  isLogined;
   @Input() newBoards: Observable<iBoard[]>;
 
   constructor(private dataService: DataService,
               private dialogService: DialogService,
-              private dragulaService: DragulaService) {
+              private dragulaService: DragulaService,
+              public snackBar: MatSnackBar) {
     this.boards = [];
   }
 
   ngOnInit() {
+    this.dataService.authChange.subscribe(state => {
+      this.isLogined = state;
+    });
+
     this.dataService.getBoards()
       .subscribe(boards => {
         this.boards = boards;
@@ -50,6 +57,7 @@ export class BoardsComponent implements OnInit {
         this.dataService.addBoard(board)
           .subscribe(newBoard => {
             this.boards.push(newBoard);
+            this.snackBar.open(`Board "${newBoard.title}" created!`, 'Ok', { duration: 2000 });
           });
       });
   }
@@ -59,6 +67,7 @@ export class BoardsComponent implements OnInit {
       .subscribe(data => {
         const index = this.boards.indexOf(board);
         this.boards.splice(index, 1);
+        this.snackBar.open(`Board "${board.title}" deleted!`, 'Ok', { duration: 2000 });
       });
   }
 

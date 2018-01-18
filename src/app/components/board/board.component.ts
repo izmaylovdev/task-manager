@@ -11,6 +11,7 @@ import { EditBoardDialogComponent } from '../edit-board-dialog/edit-board-dialog
 import { DataService } from '../../services/data.service';
 
 import 'rxjs/add/operator/mergeMap';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'tm-board',
@@ -23,7 +24,8 @@ export class BoardComponent implements OnInit {
   isLogined: boolean;
 
   constructor(private dialogService: DialogService,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.dataService.authChange.subscribe(state => {
@@ -44,6 +46,7 @@ export class BoardComponent implements OnInit {
         this.dataService.addTask(task, this.board._id)
           .subscribe(res => {
             this.board.tasks.push(task);
+            this.snackBar.open(`Task created!`, 'Ok', { duration: 2000 });
           });
       });
   }
@@ -63,6 +66,7 @@ export class BoardComponent implements OnInit {
       .subscribe(newTask => {
         const index = this.board.tasks.indexOf(task);
         this.board.tasks.splice(index, 1, newTask);
+        this.snackBar.open(`Task changed!`, 'Ok', { duration: 2000 });
       });
 
     dialog
@@ -71,6 +75,7 @@ export class BoardComponent implements OnInit {
       .subscribe(newTask => {
         const index = this.board.tasks.indexOf(task);
         this.board.tasks.splice(index, 1);
+        this.snackBar.open(`Task deleted!`, 'Ok', { duration: 2000 });
       });
 
     dialog.filter(({ action, title }) => action === 'delete')
@@ -92,6 +97,7 @@ export class BoardComponent implements OnInit {
       .map(data => data.title)
       .subscribe(title => {
         this.board.title = title;
+        this.snackBar.open(`Board renamed!`, 'Ok', { duration: 2000 });
       });
 
     dialog.filter(({ action, title}) => action === 'delete')

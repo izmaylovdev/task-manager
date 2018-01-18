@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-title>{{ board.title }}
-    <button mat-icon-button class="board__edit-button" (click)="editBoard(board)">
+    <button mat-icon-button class="board__edit-button" *ngIf="isLogined" (click)="editBoard(board)">
       <mat-icon>edit</mat-icon>
     </button>
   </mat-card-title>
@@ -12,7 +12,7 @@
         <h2 class="task__title">{{ task.title }}</h2>
         <span class="task__description">{{ task.description }}</span>
         <span class="task__due-date">{{ task.dueDate | date }}</span>
-        <button class="task__edit-button" (click)="editTask(task)">
+        <button class="task__edit-button" *ngIf="isLogined" (click)="editTask(task)">
           <mat-icon>edit</mat-icon>
         </button>
     </div>

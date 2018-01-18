@@ -22,8 +22,6 @@ export class DataService {
     this.authSubject.next(!!this.token);
   }
 
-
-
   getBoards () {
     const headers = {};
 
@@ -82,19 +80,9 @@ export class DataService {
   }
 
   logout () {
-    const headers = {};
-    if (this.token) {
-      headers['authorization'] = this.token;
-    }
-
-    return this.http.post<any>(`${this.apiUrl}/login/logout`, null, { headers })
-      .map(response => {
-        localStorage.removeItem('authToken');
-        this.authSubject.next(false);
-        this.token = null;
-        return true;
-      })
-      .catch(this.errorHandler);
+    localStorage.removeItem('authToken');
+    this.authSubject.next(false);
+    this.token = null;
   }
 
   editTask (task) {
