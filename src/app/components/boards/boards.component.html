@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="boards">
+    <tm-board 
+      *ngFor="let board of boards" 
+      class="board" 
+      [board]="board"
+      (delete)="deleteBoard($event)"></tm-board>
+    <button mat-icon-button mat-raised-button matTooltip="Add new board" (click)="addBoard()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

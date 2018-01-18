@@ -1,0 +1,13 @@
+<mat-toolbar class="toolbar">
+  <h1>Task manager</h1>
+  <div class="toolbar__actions">
+    <ng-container *ngIf="!isLogined">
+      <button mat-raised-button (click)="signUp()">Sign up</button>
+      <span class="toolbar__small-text">or</span>
+      <button mat-raised-button (click)="signIn()">Sign in</button>
+    </ng-container>
+    <ng-container *ngIf="isLogined">
+      <button mat-raised-button (click)="logout()">Logout</button>
+    </ng-container>
+  </div>
+</mat-toolbar>

@@ -1,6 +1,6 @@
 import { iTask } from './iTask';
 
 export interface iBoard {
-  name: string;
+  title: string;
   tasks: iTask[];
 }

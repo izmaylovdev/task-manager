@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { AppComponent } from './app.component';
-import { DialogComponent } from './components/dialog/dialog.component';
 import { BoardComponent } from './components/board/board.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 
@@ -15,8 +14,7 @@ import { DataService } from './services/data.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { DialogService } from './services/dialog.service';
 
-import { DndModule } from 'ng2-dnd';
-
+import { DragulaModule } from 'ng2-dragula';
 
 import {
   MatToolbarModule,
@@ -26,35 +24,46 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatInputModule
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
+import { BoardsComponent } from './components/boards/boards.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { EditTaskDialogComponent } from './components/edit-task-dialog/edit-task-dialog.component';
+import { EditBoardDialogComponent } from './components/edit-board-dialog/edit-board-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
-    DialogComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    BoardsComponent,
+    ToolbarComponent,
+    EditTaskDialogComponent,
+    EditBoardDialogComponent
   ],
   entryComponents: [
-    DialogComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    EditTaskDialogComponent,
+    EditBoardDialogComponent
   ],
   imports: [
     BrowserModule,
+    DragulaModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatToolbarModule,
     MatCardModule,
+    MatDatepickerModule,
     HttpClientModule,
     MatInputModule,
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
     MatTooltipModule,
-    FormsModule,
-    DndModule.forRoot(),
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
+    MatNativeDateModule,
+    FormsModule
   ],
   providers: [ DataService, DialogService ],
   bootstrap: [AppComponent]

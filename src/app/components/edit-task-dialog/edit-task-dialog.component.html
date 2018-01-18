@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="task.title">
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput placeholder="Description" [(ngModel)]="task.description"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [matDatepicker]="myDatepicker" placeholder="Due date" [(ngModel)]="task.dueDate">
+    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #myDatepicker> </mat-datepicker>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="{ action: 'delete' }">Delete</button>
+  <button mat-button [mat-dialog-close]="{ task: task, action: 'change' }">Save</button>
+</div>

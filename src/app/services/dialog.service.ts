@@ -9,7 +9,7 @@ export class DialogService {
 
   openDialog(component, data): Observable<any> {
     const dialogRef = this.dialog.open(component, {
-      width: '250px',
+      width: '260px',
       data
     });
 

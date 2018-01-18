@@ -1,4 +1,6 @@
 export interface iTask {
-  name: string;
+  title: string;
+  description: string;
+  dueDate: Date;
 }
 

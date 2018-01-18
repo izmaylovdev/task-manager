@@ -1,22 +1,23 @@
-<mat-card [sortableData]="board.tasks"  dnd-sortable-container (onDropSuccess)="onDrag($event)">
-  <mat-card-title>{{ board.name }}
-    <button mat-icon-button class="board__edit-button">
+<mat-card>
+  <mat-card-title>{{ board.title }}
+    <button mat-icon-button class="board__edit-button" (click)="editBoard(board)">
       <mat-icon>edit</mat-icon>
     </button>
   </mat-card-title>
-  <mat-card-content class="tasks">
-    <div 
+  <mat-card-content class="tasks" [dragula]='"first-bag"' [dragulaModel]='board.tasks' [id]="board._id">
+    <div
       *ngFor="let task of board.tasks; let i = index"
-       dnd-sortable
-       [sortableIndex]="i"
-      class="task">
-        <span>{{ task.text }}</span>
-        <button class="task__edit-button">
+      class="task"
+      [id]="task._id">
+        <h2 class="task__title">{{ task.title }}</h2>
+        <span class="task__description">{{ task.description }}</span>
+        <span class="task__due-date">{{ task.dueDate | date }}</span>
+        <button class="task__edit-button" (click)="editTask(task)">
           <mat-icon>edit</mat-icon>
         </button>
-      </div>
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button>Add task</button>
+    <button mat-button *ngIf="isLogined" (click)="createTask()">Add task</button>
   </mat-card-actions>
 </mat-card>

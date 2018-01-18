@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput #input placeholder="Title" [(ngModel)]="data.boardTitle">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button *ngIf="data.deleteEnabled" [mat-dialog-close]="{ action: 'delete' }">Delete board</button>
+  <button mat-button [mat-dialog-close]="{ action: 'change', title: input.value }">Save</button>
+</div>
