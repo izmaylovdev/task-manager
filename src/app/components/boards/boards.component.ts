@@ -39,7 +39,7 @@ export class BoardsComponent implements OnInit {
       .map(arr => ({ taskId: arr[1].id, destId: arr[2].id, fromId: arr[3].id }))
       .filter(obj => obj.destId !== obj.fromId)
       .mergeMap(obj => this.dataService.moveTask(obj))
-      .subscribe(obj => console.log(obj));
+      .subscribe(obj => {});
   }
 
   addBoard() {

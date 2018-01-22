@@ -77,9 +77,6 @@ export class BoardComponent implements OnInit {
         this.board.tasks.splice(index, 1);
         this.snackBar.open(`Task deleted!`, 'Ok', { duration: 2000 });
       });
-
-    dialog.filter(({ action, title }) => action === 'delete')
-      .subscribe(data => this.delete.emit(this.board));
   }
 
 
@@ -102,13 +99,5 @@ export class BoardComponent implements OnInit {
 
     dialog.filter(({ action, title}) => action === 'delete')
       .subscribe(data => this.delete.emit(this.board));
-  }
-
-  onDrop (event) {
-    console.log('drop', event);
-  }
-
-  onDrag (event) {
-    console.log('drag', event);
   }
 }
